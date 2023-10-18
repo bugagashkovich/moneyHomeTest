@@ -6,7 +6,6 @@ const URLRegex =
 // ------------------------------------------------------
 // ZOD схемы для продукта
 export const Product = z.object({
-  id: z.number(),
   title: z.string(),
   description: z.string(),
   price: z.number().min(0),
@@ -20,12 +19,15 @@ export const Product = z.object({
 });
 export type Product = z.infer<typeof Product>;
 
+export const ProductWithId = Product.extend({ id: z.number() });
+export type ProductWithId = z.infer<typeof ProductWithId>;
+
 // ------------------------------------------------------
 // ZOD схемы для базы данных
-export const ProductDBType = z.object({
-  products: z.array(Product),
+export const ProductDB = z.object({
+  products: z.array(ProductWithId),
   total: z.number(),
   skip: z.number(),
   limit: z.number(),
 });
-export type ProductDBType = z.infer<typeof ProductDBType>;
+export type ProductDB = z.infer<typeof ProductDB>;

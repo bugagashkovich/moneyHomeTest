@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "yarn tsc --build && node ./dist/index.js",
+    "build": "yarn tsc --build"
+  },
   "devDependencies": {
     "@types/express": "types/express",
+    "@types/node": "^20.8.7",
     "typescript": "^5.2.2",
     "zod": "^3.22.4"
   },
