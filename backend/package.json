@@ -8,12 +8,15 @@
     "build": "yarn tsc --build"
   },
   "devDependencies": {
-    "@types/express": "types/express",
+    "@types/cors": "^2.8.15",
+    "@types/express": "^4.17.20",
     "@types/node": "^20.8.7",
     "typescript": "^5.2.2",
     "zod": "^3.22.4"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2"
   }
 }

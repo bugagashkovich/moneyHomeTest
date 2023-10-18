@@ -9,6 +9,7 @@ export class LocalJSONdb {
   private static limit: ProductDB["limit"];
   private static lastId: number;
   private static isConnected: boolean = false;
+  private static connectionURL: string;
 
   private constructor() {}
 
@@ -28,6 +29,8 @@ export class LocalJSONdb {
     LocalJSONdb.limit = limit;
 
     LocalJSONdb.isConnected = true;
+    LocalJSONdb.connectionURL = path;
+    LocalJSONdb.lastId = Math.max(...products.map((o) => o.id));
   }
 
   find(): ProductWithId[] {
@@ -74,6 +77,9 @@ export class LocalJSONdb {
     let foo = LocalJSONdb.data.find((product) => {
       return product.id === id;
     });
+
+    if (!foo) return foo;
+
     let newState = LocalJSONdb.data.filter((product) => {
       return product.id != id;
     });
