@@ -49,7 +49,6 @@ export class LocalJSONdb {
     });
   }
 
-  //   TODO: Сделать клонирование бд в файл
   findByIdAndUpdate(data: ProductWithId): ProductWithId | undefined {
     if (!LocalJSONdb.isConnected)
       throw new Error("Требуется подключение к базе данных");
@@ -58,18 +57,20 @@ export class LocalJSONdb {
       return (product.id = data.id);
     });
     if (!dataToUpdate) throw new Error("Объект для обновления не найден");
+
     dataToUpdate = data;
-    let newState = [
-      ...LocalJSONdb.data.filter((product) => {
-        return product.id != data.id;
-      }),
-      dataToUpdate,
-    ];
-    LocalJSONdb.data = newState;
+
+    // Можно было бы и иммутабельно это сделать, но тогда меняется порядок карточек.
+    // и получалась какая-то странная ошибка с уменьшением количества объектов.
+
+    let index = LocalJSONdb.data.findIndex((product) => {
+      return (product.id = data.id);
+    });
+    LocalJSONdb.data[index] = data;
+    this.write();
     return dataToUpdate;
   }
 
-  //   TODO: Сделать клонирование бд в файл
   findbyIdAndDelete(id: number): ProductWithId | undefined {
     if (!LocalJSONdb.isConnected)
       throw new Error("Требуется подключение к базе данных");
@@ -85,10 +86,10 @@ export class LocalJSONdb {
     });
     LocalJSONdb.data = newState;
     LocalJSONdb.total = LocalJSONdb.data.length;
+    this.write();
     return foo;
   }
 
-  //   TODO: Сделать клонирование бд в файл
   create(data: Product): ProductWithId {
     if (!LocalJSONdb.isConnected)
       throw new Error("Требуется подключение к базе данных");
@@ -101,8 +102,19 @@ export class LocalJSONdb {
     const newProduct: ProductWithId = { ...data, id: LocalJSONdb.lastId };
     LocalJSONdb.data = [...LocalJSONdb.data, newProduct];
     LocalJSONdb.total = LocalJSONdb.data.length;
+    this.write();
     return newProduct;
   }
 
-  static async write(): Promise<void> {}
+  write(): void {
+    fs.writeFileSync(
+      LocalJSONdb.connectionURL,
+      JSON.stringify({
+        products: LocalJSONdb.data,
+        total: LocalJSONdb.total,
+        skip: LocalJSONdb.skip,
+        limit: LocalJSONdb.limit,
+      })
+    );
+  }
 }

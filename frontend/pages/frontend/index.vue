@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto mt-4">
     <h1 class="text-bold text-3xl mx-auto my-16 flex justify-center">
-      PRODUCTS {{ title }}
+      PRODUCTS
     </h1>
     <form
       class="mb-4 grid grid-cols-4 gap-6 items-center"

@@ -11,7 +11,12 @@
           <NuxtLink to="/frontend/products/addProduct">Add product</NuxtLink>
         </li>
       </ul>
-      <p class="my-auto text-white">PRODUCT TESTING Glushikhin A.S.</p>
+      <a
+        class="my-auto text-white"
+        target="_blank"
+        href="https://hh.ru/resume/8b8510aaff09eef2240039ed1f454647557559"
+        >PRODUCT TESTING Glushikhin A.S.</a
+      >
     </header>
     <div>
       <slot />

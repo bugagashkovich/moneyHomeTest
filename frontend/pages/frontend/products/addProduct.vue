@@ -96,7 +96,6 @@ let errorView = ref("");
 
 const createProduct = async (): Promise<void> => {
   try {
-    errorView.value = "";
     let newProduct: Product = {
       title: inputProduct.title,
       description: inputProduct.description,
@@ -110,12 +109,15 @@ const createProduct = async (): Promise<void> => {
       images: inputProduct.images.split(","),
     };
 
-    let res = useFetch<ProductWithId>("http://109.167.145.3/api/product", {
-      method: "POST",
-      body: { ...newProduct },
-    });
+    let res = await useFetch<ProductWithId>(
+      "http://109.167.145.3/api/product",
+      {
+        method: "POST",
+        body: { ...newProduct },
+      }
+    );
 
-    if (res.error.value) {
+    if (res.error.value && res.error) {
       console.log(res.error.value);
       throw new Error(JSON.stringify(res.error.value.data.message));
     }
@@ -134,6 +136,8 @@ const createProduct = async (): Promise<void> => {
       thumbnail: "",
       images: "",
     };
+
+    errorView.value = "";
   } catch (error) {
     console.log(error);
     if (error instanceof Error) errorView.value = error.message;
