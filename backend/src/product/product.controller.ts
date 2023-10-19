@@ -52,6 +52,7 @@ export function postProduct(req: Request, res: Response) {
   }
 }
 
+// BUG: удаляются объекты после редактирования другого объекта
 export function putProduct(req: Request, res: Response) {
   try {
     const validation = ProductWithId.safeParse(req.body);

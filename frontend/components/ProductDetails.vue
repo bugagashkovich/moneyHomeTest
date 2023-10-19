@@ -128,6 +128,7 @@ let errorView = ref<string>("");
 // TODO: Прямое изменение product ведет к ошибке. До решения пользуюсь mock
 async function updateProduct(newProduct: ProductWithId) {
   try {
+    errorView.value = "";
     let { data, pending, error, refresh } = await useFetch<ProductWithId>(
       "http://109.167.145.3/api/product",
       {

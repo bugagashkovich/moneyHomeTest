@@ -4,13 +4,13 @@
 
 ### Список того, что должно быть реализовано, frontend:
 
-• Страница 1 – Отображение продуктов списком (по 10 штук)
+• Страница 1 – Отображение продуктов списком (по 10 штук) done
 • Фильтр по полям title, description, price, rating, stock, brand, category
-• Отображение соответствующих изображений (thumbnail-preview и слайдер)
-• Пагинация
+• Отображение соответствующих изображений (thumbnail-preview done и слайдер done в карточке)
+• Пагинация done
 • Страница 2 – Карточка продукта
-• Редактирование полей title, description, price, stock, brand, category
-• Удаление продукта
+• Редактирование полей title, description, price, stock, brand, category done
+• Удаление продукта done
 • Страница 3 – Новый продукт
 • Добавление продукта (поля должны соответствовать набору полей из данного .json файла)
 
@@ -23,8 +23,6 @@
 
 • Frontend: Vue 3, Nuxt 3, TailwindCSS
 • Backend: Express, local JSON db
-
-
 
 ### Условия:
 
