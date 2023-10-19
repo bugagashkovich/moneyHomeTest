@@ -55,8 +55,11 @@ export function postProduct(req: Request, res: Response) {
 export function putProduct(req: Request, res: Response) {
   try {
     const validation = ProductWithId.safeParse(req.body);
-    if (!validation.success)
+    if (!validation.success) {
+      console.log(validation.error.issues);
+
       return res.status(422).send({ message: validation.error.issues });
+    }
     const data = validation.data;
 
     const db = LocalJSONdb.getInstance();

@@ -1,7 +1,6 @@
 <template>
   <div>
-    <p>{{ data?.brand }}</p>
-    <p>{{ data?.category }}</p>
+    <ProductDetails :product="data" />
   </div>
 </template>
 

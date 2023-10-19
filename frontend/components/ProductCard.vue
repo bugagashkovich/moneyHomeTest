@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink :to="`/products/${product.id}`">
+  <NuxtLink :to="`/frontend/products/${product.id}`">
     <div
       class="rounded-md shadow-md text-center bg-white h-[30vh] flex flex-col justify-between"
     >
