@@ -5,10 +5,10 @@
     >
       <ul class="flex gap-12">
         <li class="px-6 py-2 bg-white rounded-md shadow-md">
-          <NuxtLink to="/frontend">Products</NuxtLink>
+          <NuxtLink to="/">Products</NuxtLink>
         </li>
         <li class="px-6 py-2 bg-white rounded-md shadow-md">
-          <NuxtLink to="/frontend/products/addProduct">Add product</NuxtLink>
+          <NuxtLink to="/products/addProduct">Add product</NuxtLink>
         </li>
       </ul>
       <a

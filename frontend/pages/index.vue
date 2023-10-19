@@ -63,7 +63,7 @@
       </button>
     </form>
     <div class="grid grid-cols-5 gap-5">
-      <div v-for="p in viewData">
+      <div v-for="p in viewData" :key="p.id">
         <ProductCard :product="p" />
       </div>
     </div>

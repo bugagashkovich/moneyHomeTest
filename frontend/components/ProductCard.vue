@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink :to="`/frontend/products/${product.id}`">
+  <NuxtLink :to="`/products/${product.id}`">
     <div
       class="rounded-md shadow-md text-center bg-white h-[30vh] flex flex-col justify-between"
     >
@@ -16,12 +16,15 @@
 <script setup lang="ts">
 import { ProductWithId } from "~/types/product.zod";
 const { product } = defineProps<{ product: ProductWithId }>();
-let i = ref<number>(0);
-let currentPicture = ref(product.images[i.value]);
-let mock = ref<ProductWithId>(product);
+
+let i = ref(0);
+let currentPicture = ref(product.images[0]);
 let interval = setInterval(() => {
-  i.value += 1;
-  if (i.value === product.images.length - 1) i.value = 0;
+  if (i.value >= product.images.length - 1) {
+    i.value = 0;
+  } else {
+    i.value += 1;
+  }
 
   currentPicture.value = product.images[i.value];
 }, 5000);

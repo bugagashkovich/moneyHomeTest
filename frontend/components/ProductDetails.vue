@@ -102,7 +102,11 @@ let mock = ref<ProductWithId>(product);
 
 let interval = setInterval(() => {
   i.value += 1;
-  if (i.value === product.images.length - 1) i.value = 0;
+  if (i.value >= product.images.length - 1) {
+    i.value = 0;
+  } else {
+    i.value += 1;
+  }
 
   currentPicture.value = product.images[i.value];
 }, 5000);
@@ -116,7 +120,7 @@ async function deleteProduct(id: number) {
 
     if (res.status.value === "error") throw new Error(JSON.stringify(res.data));
 
-    await navigateTo("/frontend");
+    await navigateTo("/");
   } catch (error) {
     console.log(error);
   }
