@@ -4,9 +4,9 @@
 
 ### Список того, что должно быть реализовано, frontend:
 
-• Страница 1 – Отображение продуктов списком (по 10 штук) !done
+• Страница 1 – Отображение продуктов списком (по 10 штук)
 • Фильтр по полям title, description, price, rating, stock, brand, category !done
-• Отображение соответствующих изображений (thumbnail-preview !done и слайдер !done в карточке)
+• Отображение соответствующих изображений (thumbnail-preview !done и слайдер !done)
 • Пагинация !done
 • Страница 2 – Карточка продукта !done
 • Редактирование полей title, description, price, stock, brand, category !done
