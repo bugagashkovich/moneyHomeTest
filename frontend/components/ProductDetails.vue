@@ -94,6 +94,7 @@
 <script setup lang="ts">
 import { ProductWithId } from "~/types/product.zod";
 let { product } = defineProps<{ product: ProductWithId }>();
+
 let i = ref<number>(0);
 let currentPicture = ref(product.images[i.value]);
 
@@ -152,12 +153,10 @@ async function updateProduct(newProduct: ProductWithId) {
     }
 
     if (data.value) {
-      console.log("UUPDATE");
       mock.value = data.value;
       console.log(mock.value);
     }
   } catch (error) {
-    console.log("catched");
     console.log(error);
 
     if (error instanceof Error) errorView.value = error.message;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ProductDetails :product="data" />
+    <ProductDetails v-if="data" :product="data" />
   </div>
 </template>
 
@@ -13,4 +13,4 @@ const url = "http://109.167.145.3/api/product/" + id;
 const { data } = await useFetch<ProductWithId>(url);
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

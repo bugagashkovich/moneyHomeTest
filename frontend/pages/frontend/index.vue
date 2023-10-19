@@ -3,7 +3,10 @@
     <h1 class="text-bold text-3xl mx-auto my-16 flex justify-center">
       PRODUCTS {{ title }}
     </h1>
-    <form class="mb-4 grid grid-cols-4 gap-2" @submit.prevent="() => sort">
+    <form
+      class="mb-4 grid grid-cols-4 gap-6 items-center"
+      @submit.prevent="() => sort"
+    >
       <label>Title:</label>
       <input
         class="border-2 rounded-md px-4 py-2"

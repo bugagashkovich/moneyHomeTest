@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 import { ProductWithId } from "~/types/product.zod";
-const { product } = defineProps({ product: ProductWithId });
+const { product } = defineProps<{ product: ProductWithId }>();
 </script>
 
 <style scoped></style>
